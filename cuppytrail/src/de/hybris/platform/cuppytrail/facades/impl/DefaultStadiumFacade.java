@@ -29,10 +29,9 @@ public class DefaultStadiumFacade implements StadiumFacade {
     @Override
     public StadiumData getStadiumForCode(final String code) {
 
-        final StadiumModel stadiumModel = stadiumService.getStadiumForCode(code)
+        final StadiumModel stadiumModel = stadiumService.getStadiumForCode(code);
         StadiumData stadiumData = (StadiumData) new StadiumDataModelTransformer()
                 .transform(stadiumModel);
-
         final List<MatchSummaryData> matchSummaryDataList = (List<MatchSummaryData>) CollectionUtils.transform(stadiumModel.getMatches(),
                 new MatchToSummaryDataTransformer());
         stadiumData.setMatches(matchSummaryDataList);
@@ -41,7 +40,7 @@ public class DefaultStadiumFacade implements StadiumFacade {
     }
 
     /**
-     * Class to transform MatchModel to MatchSummary used in CollectionUtils
+     * Inner Class to transform MatchModel to MatchSummary used in CollectionUtils
      */
     class MatchToSummaryDataTransformer implements Transformer {
         @Override
@@ -62,12 +61,15 @@ public class DefaultStadiumFacade implements StadiumFacade {
         }
     }
 
+    /**
+     * Inner Class to transform StadiumModel into StadiumData
+     */
     class StadiumDataModelTransformer implements Transformer {
         @Override
         public Object transform(final Object o) {
             final StadiumModel model = (StadiumModel) o;
             final StadiumData data = new StadiumData();
-            data.setCapacity(model.getCapacity());
+            data.setCapacity(model.getCapacity().toString());
             data.setName(model.getCode());
             return data;
         }
