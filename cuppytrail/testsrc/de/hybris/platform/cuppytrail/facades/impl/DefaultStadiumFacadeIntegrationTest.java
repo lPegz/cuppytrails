@@ -42,7 +42,7 @@ public class DefaultStadiumFacadeIntegrationTest extends ServicelayerTransaction
         stadiumFacade.getStadiumForCode(STADIUM_NAME);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void getStadiumWhenNullParameter() throws Exception {
         stadiumFacade.getStadiumForCode(null);
     }

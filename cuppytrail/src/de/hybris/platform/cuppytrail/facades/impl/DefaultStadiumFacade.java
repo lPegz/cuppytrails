@@ -8,9 +8,9 @@ import de.hybris.platform.cuppytrail.facades.StadiumFacade;
 import de.hybris.platform.cuppytrail.model.StadiumModel;
 import net.sf.cglib.core.CollectionUtils;
 import net.sf.cglib.core.Transformer;
+import org.springframework.beans.factory.annotation.Required;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,5 +73,10 @@ public class DefaultStadiumFacade implements StadiumFacade {
             data.setName(model.getCode());
             return data;
         }
+    }
+
+    @Required
+    public void setStadiumService(StadiumService stadiumService) {
+        this.stadiumService = stadiumService;
     }
 }
