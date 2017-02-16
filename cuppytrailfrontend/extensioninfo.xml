@@ -15,10 +15,10 @@
 
    <extension abstractclassprefix="Generated" classprefix="Cuppytrailfrontend" managername="CuppytrailfrontendManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="cuppytrailfrontend" usemaven="false">
       <!-- for more information on maven managed libraries please consult https://wiki.hybris.com/x/Nq8sDQ -->
-               
+
       <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->         
-      <!-- <requires-extension name="cms"/> -->         
-      
+      <!-- <requires-extension name="cms"/> -->
+      <requires-extension name="cuppytrail" />
 
       <coremodule generated="true" manager="de.hybris.platform.cuppytrailfrontend.jalo.CuppytrailfrontendManager" packageroot="de.hybris.platform.cuppytrailfrontend"/>
 

@@ -6,7 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- * Created by luizhp on 2/15/17.
+ * Helper class to encode Strings.
  */
 public class StadiumsNameEncoded {
 
