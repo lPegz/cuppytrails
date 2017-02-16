@@ -1,0 +1,9 @@
+#Ant properties
+#Thu Aug 11 10:46:12 CEST 2016
+builddate=20160811 1044
+description=cuppytrailcockpit
+name=cuppytrailcockpit
+releasedate=20150915 1445
+vendor=hybris
+version=5.7.0.15
+version.api=5.7.0
