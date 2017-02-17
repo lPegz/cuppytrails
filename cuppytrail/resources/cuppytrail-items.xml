@@ -39,6 +39,9 @@
 		<itemtype code="Stadium" generate="true" autocreate="true">
 			<deployment table="CuppyTrailStadium" typecode="10123"/>
 			<attributes>
+				<attribute qualifier="stadiumImage" type="MediaContainer" >
+					<persistence type="property"/>
+				</attribute>
 				<attribute qualifier="capacity" type="java.lang.Integer">
 					<persistence type="property"/>
 				</attribute>
@@ -61,6 +64,14 @@
 					<defaultvalue>
 						de.hybris.platform.cuppytrail.constraints.NotEmptyCuppy.class
 					</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype code="MatchBet" autocreate="false" generate="false">
+			<attributes>
+				<attribute qualifier="matchScore" type="java.lang.Integer" >
+					<persistence type="dynamic" attributeHandler="matchBetScoreAttributeHandler"/>
+					<modifiers read="true" write="false"/>
 				</attribute>
 			</attributes>
 		</itemtype>
