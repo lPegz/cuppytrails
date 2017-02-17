@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface StadiumFacade {
 
-    List<StadiumData> getStadiums();
+    List<StadiumData> getStadiums(final String format);
 
-    StadiumData getStadiumForCode(final String code);
+    StadiumData getStadiumForCode(final String code, final String format);
 
 }

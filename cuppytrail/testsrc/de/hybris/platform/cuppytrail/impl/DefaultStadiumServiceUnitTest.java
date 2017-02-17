@@ -29,6 +29,7 @@ public class DefaultStadiumServiceUnitTest {
     private StadiumModel stadiumModel;
     private final String STADIUM_NAME = "morumbi";
     private final Integer STADIUM_CAPACITY = 12345;
+    private final String imgURL = "localhost.img.jpg";
 
     @Before
     public void setup() {
@@ -68,4 +69,9 @@ public class DefaultStadiumServiceUnitTest {
 
     }
 
+    @Test
+    public void getImageUrlStadium() throws Exception {
+        // Tell Mockito we expect a call to the DAO's getStadium(), and, if it occurs, Mockito should return StadiumModel instance
+        when(stadiumDAO.findStadiumsByCode(STADIUM_NAME)).thenReturn(Collections.singletonList(stadiumModel));
+    }
 }

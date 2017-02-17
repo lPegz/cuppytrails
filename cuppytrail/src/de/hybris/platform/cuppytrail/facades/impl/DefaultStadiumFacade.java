@@ -21,13 +21,13 @@ public class DefaultStadiumFacade implements StadiumFacade {
     private StadiumService stadiumService;
 
     @Override
-    public List<StadiumData> getStadiums() {
+    public List<StadiumData> getStadiums(final String format) {
         return (List<StadiumData>) CollectionUtils.transform(stadiumService.getStadiums()
-                , new StadiumDataModelTransformer());
+                , new StadiumDataModelTransformer().init(format));
     }
 
     @Override
-    public StadiumData getStadiumForCode(final String code) {
+    public StadiumData getStadiumForCode(final String code, final String format) {
 
         final StadiumModel stadiumModel = stadiumService.getStadiumForCode(code);
         StadiumData stadiumData = (StadiumData) new StadiumDataModelTransformer()
@@ -35,7 +35,7 @@ public class DefaultStadiumFacade implements StadiumFacade {
         final List<MatchSummaryData> matchSummaryDataList = (List<MatchSummaryData>) CollectionUtils.transform(stadiumModel.getMatches(),
                 new MatchToSummaryDataTransformer());
         stadiumData.setMatches(matchSummaryDataList);
-
+        stadiumData.setImageUrl(stadiumService.getImageUrlFromStadium(stadiumModel, format));
         return stadiumData;
     }
 
@@ -65,13 +65,24 @@ public class DefaultStadiumFacade implements StadiumFacade {
      * Inner Class to transform StadiumModel into StadiumData
      */
     class StadiumDataModelTransformer implements Transformer {
+        private String format;
+
         @Override
         public Object transform(final Object o) {
             final StadiumModel model = (StadiumModel) o;
             final StadiumData data = new StadiumData();
+            try{
+                data.setImageUrl(stadiumService.getImageUrlFromStadium(model, format));
+            } catch (final Exception e) {
+                data.setImageUrl("");
+            }
             data.setCapacity(model.getCapacity().toString());
             data.setName(model.getCode());
             return data;
+        }
+        private StadiumDataModelTransformer init(String format) {
+            this.format = format;
+            return this;
         }
     }
 
