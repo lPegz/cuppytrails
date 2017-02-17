@@ -7,6 +7,7 @@
 <ul>
     <c:forEach var="stadium" items="${stadiums}">
         <li><a href="../stadiums/${stadium.name}">${stadium.name}</a></li>
+        <img style="margin-left:20px;vertical-align:top;margin-bottom:20px" src="${stadium.imageUrl}"/>
     </c:forEach>
 </ul>
 </body>

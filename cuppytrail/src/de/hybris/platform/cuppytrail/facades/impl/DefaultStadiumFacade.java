@@ -23,7 +23,7 @@ public class DefaultStadiumFacade implements StadiumFacade {
     @Override
     public List<StadiumData> getStadiums(final String format) {
         return (List<StadiumData>) CollectionUtils.transform(stadiumService.getStadiums()
-                , new StadiumDataModelTransformer().init(format));
+                , new StadiumDataModelTransformer().init(format, stadiumService));
     }
 
     @Override
@@ -66,6 +66,7 @@ public class DefaultStadiumFacade implements StadiumFacade {
      */
     class StadiumDataModelTransformer implements Transformer {
         private String format;
+        private StadiumService stadiumService;
 
         @Override
         public Object transform(final Object o) {
@@ -80,8 +81,9 @@ public class DefaultStadiumFacade implements StadiumFacade {
             data.setName(model.getCode());
             return data;
         }
-        private StadiumDataModelTransformer init(String format) {
+        private StadiumDataModelTransformer init(String format, StadiumService stadiumService) {
             this.format = format;
+            this.stadiumService = stadiumService;
             return this;
         }
     }

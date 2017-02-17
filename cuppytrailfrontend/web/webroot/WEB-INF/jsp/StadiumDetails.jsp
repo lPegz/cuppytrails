@@ -13,6 +13,7 @@ Matches:<br>
         <li>${match.matchSummaryFormatted}</li>
     </c:forEach>
 </ul>
+<img src="${stadium.imageUrl}"/> <br/>
 <a href="../stadiums">Back to Stadium Listing</a>
 </body>
-</html>
+</html>ServiceInte
